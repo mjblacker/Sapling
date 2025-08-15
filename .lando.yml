@@ -1,4 +1,4 @@
-name: mbs
+name: sapling
 recipe: wordpress
 config:
   webroot: wp
