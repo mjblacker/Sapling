@@ -1,0 +1,13 @@
+{#
+Template used by header.php/footer.php for plugins that take over
+theme calls and ensure the buffered output is rendered.
+
+`content` is the buffer loaded into the context.
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+    <div>
+        {{content}}
+    </div><!-- /content-wrapper -->
+{% endblock %}

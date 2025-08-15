@@ -1,0 +1,5 @@
+/* Custom theme styles */
+
+.btn {
+  @apply text-2xl bg-green-800 rounded border-1;
+}

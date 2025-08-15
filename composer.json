@@ -1,0 +1,39 @@
+{
+  "name": "mjblacker/sapling",
+  "type": "wordpress-theme",
+  "description": "A modern WordPress theme using Lando, Timber, ACF, Tailwind CSS and Alpine JS",
+  "license": "MIT",
+  "authors": [{
+    "name": "Matt Blacker",
+    "email": "support@aspireweb.com.au"
+  }],
+  "require": {
+    "php": ">= 8.2",
+    "timber/timber": "^2.2"
+  },
+  "require-dev": {
+      "johnpbloch/wordpress-core-installer": "^2.0",
+      "johnpbloch/wordpress-core": "^6.8.2"
+  },
+  "extra": {
+      "wordpress-install-dir": {
+          "johnpbloch/wordpress-core": "wp"
+      }
+  },
+  "autoload": {
+      "psr-4": {
+          "Sapling\\": "theme/app/Sapling",
+          "App\\": "theme/app/"
+      },
+      "classmap": ["theme/app/Sapling/Integrations/", "theme/app/Sapling/Sapling.php"]
+  },
+  "config": {
+    "vendor-dir": "theme/vendor",
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "allow-plugins": {
+      "johnpbloch/wordpress-core-installer": true
+    }
+  },
+  "minimum-stability": "stable"
+}

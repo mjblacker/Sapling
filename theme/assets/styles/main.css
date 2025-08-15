@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@import './safelist.css';
+@import './theme.css';
+
+@plugin '@tailwindcss/typography';
+
+body.admin-bar {
+  max-height: calc(100vh - 32px);
+}

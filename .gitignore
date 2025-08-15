@@ -1,0 +1,18 @@
+*.log
+.env
+.DS_Store
+/theme/assets/dist/
+
+# Ignore dev dependencies
+/node_modules
+/bower_components
+/doc
+/theme/vendor
+/vendor
+/wp
+
+# Release artifacts
+/*.zip
+/*.tar
+/*.tar.gz
+/*.sql.gz

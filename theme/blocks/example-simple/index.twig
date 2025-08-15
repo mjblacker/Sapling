@@ -1,0 +1,5 @@
+<div class="flex items-center bg-emerald-500 p-40 example">
+    <div class="max-w-3xl py-20 px-10 m-auto bg-white rounded-lg w-3/4 h-64 flex items-center shadow-xl" x-data="{ showPhrase: true }">
+        <h1 class="w-full text-center text-3xl md:text-5xl font-mono" @mouseover="showPhrase = false" @mouseout="showPhrase = true" x-text="showPhrase ? 'Sapling' : '{{ hover.sapling }}'"></h1>
+    </div>
+</div>

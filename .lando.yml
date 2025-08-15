@@ -1,0 +1,79 @@
+name: mbs
+recipe: wordpress
+config:
+  webroot: wp
+  php: '8.2'
+  composer_version: 2-latest
+
+services:
+  appserver:
+    run_as_root:
+      - apt-get update
+      - apt-get install zip dos2unix
+      - dos2unix /app/scripts/setup-wordpress.sh
+
+    run:
+      - cd $LANDO_MOUNT && composer install
+      #- cd $LANDO_MOUNT && scripts/setup-wordpress.sh
+      - echo "To set up WordPress, run 'lando install' if you have not already done so."
+
+    overrides:
+      environment:
+        # Pass any non-empty CI envvar from the host into Lando
+        # This is so we can force non-interactive mode setting up WP
+        CI: ${CI:-''}
+
+  database:
+    type: mysql
+
+  node:
+    type: node:20
+
+    ports:
+      - 3012:3012
+
+    globals:
+      npm: "latest"
+
+    run:
+      - 'npm install'
+
+tooling:
+  install:
+    service: appserver
+    cmd: '/app/scripts/setup-wordpress.sh'
+    description: 'Install and configure WordPress for custom theme dev'
+
+  wp:
+    service: appserver
+
+  composer:
+    service: appserver
+
+  npm:
+    service: node
+
+  dev-debug:
+    service: node
+    cmd: 'DEBUG="vite:*" npm run dev'
+
+  dev:
+    service: node
+    cmd: 'npm run dev'
+
+  build:
+    service: node
+    cmd: 'npm run build'
+    description: 'Build the theme assets for production'
+
+  bundle:
+    service: node
+    cmd: 'npm run bundle'
+    description: 'Build and Bundle the theme ready for deployment as a theme zip'
+
+  debug:
+    service: appserver
+    cmd: 'tail -f /app/wp/wp-content/debug.log'
+    description: 'Get real-time WP debug log output'
+
+
