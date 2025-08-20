@@ -123,9 +123,7 @@ EOF
   # install/activate plugins and theme
   uninstall_plugins hello akismet
 
-  wp --quiet plugin install --activate advanced-custom-fields
-  #wp --quiet plugin install --activate classic-editor
-  #wp --quiet plugin activate conifer
+  # activate this theme on the site
   wp --quiet theme activate "$DEFAULT_APP_NAME"
 
   # uninstall stock themes
@@ -134,7 +132,7 @@ EOF
 
   # configure pretty permalinks
   wp option set permalink_structure '/%postname%/'
-  wp rewrite flush
+  wp rewrite flush --hard
 
 }
 
