@@ -72,6 +72,18 @@ tooling:
     cmd: 'npm run build'
     description: 'Build the theme assets for production'
 
+  version:patch:
+    service: node
+    cmd: 'npm run version:patch'
+
+  version:minor:
+    service: node
+    cmd: 'npm run version:minor'
+
+  version:major:
+    service: node
+    cmd: 'npm run version:major'
+
   bundle:
     service: node
     cmd: 'npm run bundle'

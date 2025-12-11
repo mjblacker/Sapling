@@ -38,6 +38,14 @@ Vite is configured to run on port 3012 by default. This is a combination of the 
 
 To assist with long-term caching, file hashing (e.g. `main-e1457bfd.js`) is enabled by default. This is useful for cache-busting purposes.
 
+There are the following commands to update the version of the theme as needed. This will update the style.css file with the incremented version number based on the update type.
+
+```
+lando version:patch  # For small fixes (0.1.3 → 0.1.4)
+lando version:minor  # For new features (0.1.3 → 0.2.0)
+lando version:major  # For breaking changes (0.1.3 → 2.0.0)
+```
+
 ## Production
 
 When you're ready for production, run `lando bundle` from the theme directory. You can test production assets in development by setting the vite → environment property to "production" in config.json.
